@@ -1,0 +1,169 @@
+<!-- START SECTION HEADINGS -->
+        <!-- Header Container
+        ================================================== -->
+        <header id="header-container" class="header head-tr" style="background-color: #303441;">
+            <!-- Header -->
+            <div id="header" class="head-tr bottom">
+                <div class="container container-header">
+                    <!-- Left Side Content -->
+                    <div class="left-side">
+                        <!-- Logo -->
+                        <div id="logo">
+                            <a href="index.html"><img src="../../../assets/images/logo-white-1.svg" data-sticky-logo="../../../assets/images/logo-red.svg" alt=""></a>
+                        </div>
+                        <!-- Mobile Navigation -->
+                        <div class="mmenu-trigger">
+                            <button class="hamburger hamburger--collapse" type="button">
+                                <span class="hamburger-box">
+							<span class="hamburger-inner"></span>
+                                </span>
+                            </button>
+                        </div>
+                        <!-- Main Navigation -->
+                        <nav id="navigation" class="style-1 head-tr">
+                            <ul id="responsive">
+                                <li><a href="/home">Home</a></li>
+                                <li><a>Sell</a>
+                                    <ul>
+                                        <li><a >Sell Offer</a>
+                                            <ul>
+                                                <li><a href="/listeofferfront">List Offers</a></li>
+                                                <li><a href="/addofferfront">Add Offer Sell</a></li>
+                                            </ul>
+                                        </li>
+                                 </ul>
+                                </li>                                <li><a >Relocation</a>
+                                    <ul>
+                                        <li><a >Relocation</a>
+                                            <ul>
+                                                <li><a href="/listfurniturefront">Furniture List</a></li>
+                                                
+                                            </ul>
+                                        </li>
+                                        <li><a >Delivery</a>
+                                            <ul>
+                                                <li><a href="/DeliveryFront">Delivery</a></li>
+                                                
+                                            </ul>
+                                        </li>
+                                        <li><a >Tax</a>
+                                            <ul>
+                                                <li><a href="/addpaymenttax">Pay Tax</a></li>
+                                                
+                                            </ul>
+                                        </li>
+                                          
+                                      
+                                    </ul>
+                                    </li>
+                                   
+                                    <li><a href="/listfront">Plan</a>
+                                       
+                                    </li>
+                                    <li><a href="/posts">Blog</a>
+                                       
+                                    </li>
+                                    <li><a href="/listRentalOffersFront">Rental</a>
+                                    
+                                    </li>
+                               
+                                   
+                                    <li class="d-none d-xl-none d-block d-lg-block"><a href="login.html">Login</a></li>
+                                    <li class="d-none d-xl-none d-block d-lg-block"><a href="register.html">Register</a></li>
+                            </ul>
+                        </nav>
+                        <!-- Main Navigation / End -->
+                    </div>
+                    <!-- Left Side Content / End -->
+
+                    <!-- Right Side Content / End -->
+                    <div class="right-side d-none d-none d-lg-none d-xl-flex">
+                        <!-- Header Widget -->
+
+
+                        <!-- Header Widget / End -->
+                    </div>
+                    <!-- Right Side Content / End -->
+
+                    <!-- Right Side Content / End -->
+
+                    <!-- Right Side Content / End -->
+
+                    <!-- Right Side Content / End -->
+                    
+                    <div class="header-user-menu user-menu add">
+                        
+                        <div class="header-user-name">
+                            <span *ngIf="authService.checkToken()"><img [src]="getProfilePictureFromCookie()" alt=""></span>
+                          <p *ngIf="authService.checkToken()"> Hi, {{getLastnameFromCookie()}} {{getFirstnameFromCookie()}} </p>
+                        </div>
+                        <ul *ngIf="authService.checkToken()">
+
+                            <li><a href="user-profile.html"> Edit profile</a></li>
+                            <li><a href="add-property.html"> Add Property</a></li>
+                            <li><a href="payment-method.html">  Payments</a></li>
+                            <li><a routerLink="/changepassword"> Change Password</a></li>
+                            <li><a (click)="logout()" >Log Out</a></li>
+
+                        </ul>
+                    </div>
+                        <!-- Header Widget / End -->
+                    </div>
+                    
+                    <div class="right-side d-none d-none d-lg-none d-xl-flex sign ml-0">
+                        <!-- Header Widget -->
+                        <div class="header-widget sign-in">
+                            <div class="show-reg-form modal-open"><a *ngIf="!authService.checkToken()"  routerLink="/login">Sign In</a></div>
+                        </div>
+                      </div>
+                      <div class="right-side d-none d-none d-lg-none d-xl-flex sign ml-0">
+                        <div class="header-widget sign-in">
+                          <div class="show-reg-form modal-open"><a *ngIf="!authService.checkToken()"  routerLink="/register">Sign Up</a></div>
+                      </div>
+                    </div>
+                        <!-- Header Widget / End -->
+
+                    <!-- Right Side Content / End -->
+
+                    <!-- lang-wrap-->
+                    <div class="header-user-menu user-menu add">
+
+                    <div class="header-user-menu user-menu add d-none d-lg-none d-xl-flex">
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                                
+                                
+                                <i class="fa fa-bell me-lg-2" style="color:white" *ngIf="!boolean"></i>
+                                <i class="fa fa-bell me-lg-2" style="color:red" *ngIf="boolean"></i>
+
+                                
+                                <span class="d-none d-lg-inline-flex" style="color:white">Notificatin 
+                                </span>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
+                                
+                                <hr class="dropdown-divider">
+                            <div *ngFor="let contrat of contratYoufa">
+                                
+                                <div  class="dropdown-item"  >
+                                    <h6 class="fw-normal mb-0">Rappel de fin de contrat</h6>
+                                    <small>Chére client ,votre contrat de location d'id {{contrat.contractid}} se termine le {{contrat.enddate}}</small>
+                               <button (click)="detail(contrat.contractid)">visualier</button>
+                                </div>
+                                <hr class="dropdown-divider">
+                            
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    </div>
+                    <!-- lang-wrap end-->
+
+                </div>
+
+            <!-- Header / End -->
+
+        </header>
+        <div class="clearfix"></div>
+
